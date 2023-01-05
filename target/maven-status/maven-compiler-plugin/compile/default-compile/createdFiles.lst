@@ -1,0 +1,8 @@
+com\example\appointment\service\AppointmentServiceImplementation.class
+com\example\appointment\model\AppointmentStatus.class
+com\example\appointment\SpringBootAppointmentApplication.class
+com\example\appointment\model\Appointment.class
+com\example\appointment\controller\AppointmentRestController.class
+com\example\appointment\repository\AppointmentRepository.class
+com\example\appointment\service\AppointmentService.class
+com\example\appointment\repository\LoadDataRepository.class

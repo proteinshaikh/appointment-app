@@ -1,0 +1,5 @@
+com\example\appointment\ut\service\AppointmentServiceImplementationTests.class
+com\example\appointment\ut\repository\AppointmentRepositoryTests.class
+com\example\appointment\ut\service\AppointmentServiceImplementationTests$EmployeeServiceImplTestContextConfiguration.class
+com\example\appointment\SpringBootAppointmentApplicationTests.class
+com\example\appointment\ut\controller\AppointmentRestControllerTests.class

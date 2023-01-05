@@ -15,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -39,21 +40,11 @@ public class AppointmentRestControllerTests {
     }
 
     @Test
-    public void whenFindById_thenOneObjectIsReturned() throws Exception {
-
-        mockMvc.perform(MockMvcRequestBuilders
-                .get("/api/v1/appointments/1")
-                .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
-    }
-
-    @Test
     public void whenFindByAll_thenAllObjectsAreReturned() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders
-                .get("/api/v1/appointments/")
-                .accept(MediaType.APPLICATION_JSON))
+                        .get("/api/v1/appointments/")
+                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE));
     }
@@ -62,7 +53,7 @@ public class AppointmentRestControllerTests {
     public void whenDeleteById_thenStatusOk() throws Exception {
 
         mockMvc.perform(MockMvcRequestBuilders
-                .delete("/api/v1/appointments/1"))
+                        .delete("/api/v1/appointments/1"))
                 .andExpect(status().isOk());
     }
 }

@@ -4,6 +4,7 @@ import com.example.appointment.model.Appointment;
 import com.example.appointment.repository.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 import java.util.*;
 
@@ -21,8 +22,8 @@ public class AppointmentServiceImplementation implements AppointmentService {
     }
 
     @Override
-    public Optional<Appointment> findById(Long appointmentId) {
-        return appointmentRepository.findById(appointmentId);
+    public List<Appointment> findByPatientName(String patientName) {
+        return appointmentRepository.findByPatientName(patientName);
     }
 
     @Override
@@ -31,8 +32,8 @@ public class AppointmentServiceImplementation implements AppointmentService {
     }
 
     @Override
-    public List<Appointment> findByDateRangeSortedByPrice(LocalDate startDate, LocalDate endDate) {
-        return appointmentRepository.findAllByAppointmentDateBetweenOrderByPriceAsc(startDate, endDate);
+    public List<Appointment> findByDateRange(LocalDate startDate, LocalDate endDate) {
+        return appointmentRepository.findAllByAppointmentDateBetween(startDate, endDate);
     }
 
     @Override
@@ -50,8 +51,8 @@ public class AppointmentServiceImplementation implements AppointmentService {
 
         Optional<Appointment> appointmentList = appointmentRepository.findById(appointmentId);
 
-        if(appointmentList.isPresent()){
-            if(appointment.getStatus() != null){
+        if (appointmentList.isPresent()) {
+            if (appointment.getStatus() != null) {
                 appointmentList.get().setStatus(appointment.getStatus());
             }
             return appointmentRepository.save(appointmentList.get());

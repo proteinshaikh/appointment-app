@@ -9,11 +9,11 @@ import java.util.Optional;
 
 public interface AppointmentService {
 
-    Optional<Appointment> findById(Long appointmentId);
+    List<Appointment> findByPatientName(String patientName);
 
     List<Appointment> findAll();
 
-    List<Appointment> findByDateRangeSortedByPrice(LocalDate startDate, LocalDate endDate);
+    List<Appointment> findByDateRange(LocalDate startDate, LocalDate endDate);
 
     Appointment create(Appointment appointment);
 

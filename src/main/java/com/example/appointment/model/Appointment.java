@@ -14,17 +14,32 @@ import java.time.LocalDate;
 @Entity
 public class Appointment {
 
-    private @Id @GeneratedValue Long id;
+    private @Id
+    @GeneratedValue Long id;
+
+
+    private String patientName;
     private Timestamp createdAt = new Timestamp(System.currentTimeMillis());
     private LocalDate appointmentDate;
     private Time appointmentStartTime;
     private Time appointmentEndTime;
     private String nameOfDoctor;
-    private AppointmentStatus status = AppointmentStatus.Booked;
+    private AppointmentStatus status;
     private BigDecimal price;
 
     public Appointment() {
 
+    }
+
+    public Appointment(String patientName, Timestamp createdAt, LocalDate appointmentDate, Time appointmentStartTime, Time appointmentEndTime, String nameOfDoctor, AppointmentStatus status, BigDecimal price) {
+        this.patientName = patientName;
+        this.createdAt = createdAt;
+        this.appointmentDate = appointmentDate;
+        this.appointmentStartTime = appointmentStartTime;
+        this.appointmentEndTime = appointmentEndTime;
+        this.nameOfDoctor = nameOfDoctor;
+        this.status = status;
+        this.price = price;
     }
 
     public Appointment(Timestamp createdAt, LocalDate appointmentDate, Time appointmentStartTime, Time appointmentEndTime, String nameOfDoctor, AppointmentStatus status, BigDecimal price) {
@@ -37,7 +52,8 @@ public class Appointment {
         this.price = price;
     }
 
-    public Appointment(LocalDate appointmentDate, Time appointmentStartTime, Time appointmentEndTime, String nameOfDoctor, BigDecimal price) {
+    public Appointment(String patientName, LocalDate appointmentDate, Time appointmentStartTime, Time appointmentEndTime, String nameOfDoctor, BigDecimal price) {
+        this.patientName = patientName;
         this.appointmentDate = appointmentDate;
         this.appointmentStartTime = appointmentStartTime;
         this.appointmentEndTime = appointmentEndTime;
@@ -45,7 +61,8 @@ public class Appointment {
         this.price = price;
     }
 
-    public Appointment(LocalDate appointmentDate, String nameOfDoctor, BigDecimal price) {
+    public Appointment(String patientName,LocalDate appointmentDate, String nameOfDoctor, BigDecimal price) {
+        this.patientName = patientName;
         this.appointmentDate = appointmentDate;
         this.nameOfDoctor = nameOfDoctor;
         this.price = price;
@@ -57,6 +74,14 @@ public class Appointment {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
     }
 
     public Timestamp getCreatedAt() {

@@ -1,6 +1,6 @@
 package com.example.appointment.model;
 
 
-public enum AppointmentStatus{
-    Available, Booked;
+public enum AppointmentStatus {
+    Available, Booked, Cancel;
 }

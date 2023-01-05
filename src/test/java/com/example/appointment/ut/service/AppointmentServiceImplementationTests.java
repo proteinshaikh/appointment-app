@@ -43,9 +43,9 @@ public class AppointmentServiceImplementationTests {
     @Before
     public void setUp() {
 
-        Appointment appointmenFirst = new Appointment(LocalDate.of(2019, 2, 3), Time.valueOf("11:00:00"),  Time.valueOf("12:00:00"),"Markus", new BigDecimal(90));
-        Appointment appointmentSecond = new Appointment(LocalDate.of(2019, 2, 15), Time.valueOf("14:00:00"),  Time.valueOf("15:00:00"),"Thomas", new BigDecimal(60));
-        Appointment appointmentThird = new Appointment(LocalDate.of(2019, 1, 23), Time.valueOf("18:00:00"),  Time.valueOf("19:00:00"),"Chris", new BigDecimal(10));
+        Appointment appointmenFirst = new Appointment("Test1",LocalDate.of(2023, 2, 3), Time.valueOf("11:00:00"), Time.valueOf("12:00:00"), "Test", new BigDecimal(90));
+        Appointment appointmentSecond = new Appointment("Test2",LocalDate.of(2023, 2, 15), Time.valueOf("14:00:00"), Time.valueOf("15:00:00"), "Test1", new BigDecimal(60));
+        Appointment appointmentThird = new Appointment("Test3",LocalDate.of(2023, 1, 23), Time.valueOf("18:00:00"), Time.valueOf("19:00:00"), "Test2", new BigDecimal(10));
 
         List<Appointment> allAppointments = Arrays.asList(appointmenFirst, appointmentSecond, appointmentThird);
 
@@ -54,23 +54,13 @@ public class AppointmentServiceImplementationTests {
         Mockito.when(appointmentRepository.findById(-99L)).thenReturn(Optional.empty());
     }
 
-    @Test
-    public void whenInValidId_thenAppointmentShouldNotBeFound() {
 
-        appointmentService.create(new Appointment(LocalDate.of(2019, 2, 3), Time.valueOf("11:00:00"),  Time.valueOf("12:00:00"),"Markus", new BigDecimal(90)));
-        appointmentService.create(new Appointment(LocalDate.of(2019, 2, 15), Time.valueOf("14:00:00"),  Time.valueOf("15:00:00"),"Thomas", new BigDecimal(60)));
-        appointmentService.create(new Appointment(LocalDate.of(2019, 1, 23), Time.valueOf("18:00:00"),  Time.valueOf("19:00:00"),"Chris", new BigDecimal(10)));
-
-        Optional<Appointment> appointment = appointmentService.findById(Long.valueOf(-99));
-        verifyFindByIdIsCalledOnce();
-        assertThat(appointment).isEmpty();
-    }
 
     @Test
     public void whenFindAll_thenReturnAllRecords() {
-        Appointment appointmenFirst = new Appointment(LocalDate.of(2019, 2, 3), Time.valueOf("11:00:00"),  Time.valueOf("12:00:00"),"Markus", new BigDecimal(90));
-        Appointment appointmentSecond = new Appointment(LocalDate.of(2019, 2, 15), Time.valueOf("14:00:00"),  Time.valueOf("15:00:00"),"Thomas", new BigDecimal(60));
-        Appointment appointmentThird = new Appointment(LocalDate.of(2019, 1, 23), Time.valueOf("18:00:00"),  Time.valueOf("19:00:00"),"Chris", new BigDecimal(10));
+        Appointment appointmenFirst = new Appointment("Test1",LocalDate.of(2023, 2, 3), Time.valueOf("11:00:00"), Time.valueOf("12:00:00"), "Test", new BigDecimal(90));
+        Appointment appointmentSecond = new Appointment("Test2",LocalDate.of(2023, 2, 15), Time.valueOf("14:00:00"), Time.valueOf("15:00:00"), "Test1", new BigDecimal(60));
+        Appointment appointmentThird = new Appointment("Test3",LocalDate.of(2023, 1, 23), Time.valueOf("18:00:00"), Time.valueOf("19:00:00"), "Test2", new BigDecimal(10));
 
         List<Appointment> allAppointments = appointmentService.findAll();
         verifyFindAllEmployeesIsCalledOnce();
